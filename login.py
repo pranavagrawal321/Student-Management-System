@@ -54,7 +54,7 @@ LoginButton = Button(loginFrame, text="Login", font=("times new roman", 20, "bol
                      activebackground="#000000", activeforeground="white", cursor="hand2", command=login)
 LoginButton.grid(row=3, column=0, columnspan=2, pady=20, padx=20)
 
-
-Button(root, text="Exit", command=lambda: messagebox.askyesno("Exit", "Do you want to exit") and root.destroy()).place(x=1500, y=814)
+Button(root, text="Exit", command=lambda: messagebox.askyesno("Exit", "Do you want to exit") and root.destroy()).place(
+    x=1500, y=814)
 
 root.mainloop()
