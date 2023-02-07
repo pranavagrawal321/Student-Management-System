@@ -1,5 +1,4 @@
 # Student-Management-System
-____________________________________________________________________________________
 
 A Graphical User Interface that helps to manage students' data.
 
