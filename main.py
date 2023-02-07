@@ -1,8 +1,21 @@
 import time
 from tkinter import *
-from tkinter import ttk, messagebox, Toplevel
+from tkinter import ttk, messagebox, Toplevel, filedialog
 import ttkthemes
 import pymysql
+from pandas import DataFrame
+
+def export_data():
+    url = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("CSV file", "*.csv"), ("All files", "*.*")))
+    indexing = studentTable.get_children()
+    l = []
+    for i in indexing:
+        content = studentTable.item(i)["values"]
+        l.append(content)
+
+    table = DataFrame(l, columns=["Id", "Name", "Phone", "Email", "Address", "Gender", "D.O.B", "Date", "Time"])
+    table.to_csv(url, index=False)
+    messagebox.showinfo("Success", "Data exported successfully")
 
 
 def update_data():
@@ -231,8 +244,8 @@ def new_student():
 def connect():
     try:
         global cursor, con
-        # con = pymysql.connect(host=host_entry.get(), user=username_entry.get(), password=password_entry.get())
-        con = pymysql.connect(host="localhost", user="root", password="root")
+        con = pymysql.connect(host=host_entry.get(), user=username_entry.get(), password=password_entry.get())
+        # con = pymysql.connect(host="localhost", user="root", password="root")
         cursor = con.cursor()
     except:
         messagebox.showerror("Error", "Connection Failed!", parent=top_level_root)
@@ -355,7 +368,7 @@ updateStudent.grid(row=4, column=1, pady=20)
 showStudent = ttk.Button(leftFrame, text="Show Student", cursor="hand2", width=25, state=DISABLED, command=show_student)
 showStudent.grid(row=5, column=1, pady=20)
 
-exportData = ttk.Button(leftFrame, text="Export Data", cursor="hand2", width=25, state=DISABLED)
+exportData = ttk.Button(leftFrame, text="Export Data", cursor="hand2", width=25, state=DISABLED, command=export_data)
 exportData.grid(row=6, column=1, pady=20)
 
 exitButton = ttk.Button(leftFrame, text="Exit", cursor="hand2", width=25,
