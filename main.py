@@ -232,7 +232,7 @@ def connect():
     try:
         global cursor, con
         # con = pymysql.connect(host=host_entry.get(), user=username_entry.get(), password=password_entry.get())
-        con = pymysql.connect(host="localhost", user="root", password="1234")
+        con = pymysql.connect(host="localhost", user="root", password="root")
         cursor = con.cursor()
     except:
         messagebox.showerror("Error", "Connection Failed!", parent=top_level_root)
@@ -310,8 +310,16 @@ root.state('zoomed')
 root.resizable(False, False)
 root.title("Student Management System")
 
+
 # root.protocol("WM_DELETE_WINDOW", exit)
 # root.overrideredirect(True)
+
+
+def __CancelCommand():
+    pass
+
+
+root.protocol('WM_DELETE_WINDOW', __CancelCommand)
 
 Label(root, text="Student Management System", font=("times new roman", 40, "bold", "italic", "underline")).pack()
 
