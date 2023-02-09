@@ -5,8 +5,10 @@ import ttkthemes
 import pymysql
 from pandas import DataFrame
 
+
 def export_data():
-    url = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("CSV file", "*.csv"), ("All files", "*.*")))
+    url = filedialog.asksaveasfilename(initialdir="/", title="Select file",
+                                       filetypes=(("CSV file", "*.csv"), ("All files", "*.*")))
     indexing = studentTable.get_children()
     l = []
     for i in indexing:
