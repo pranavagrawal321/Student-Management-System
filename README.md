@@ -64,7 +64,6 @@ Once the connection is established, the user can perform the following operation
 
 ```
 pip install pymysql
-pip install pymysql
 pip install pandas
 ```
 
